@@ -1,21 +1,20 @@
 import React, {useEffect} from 'react';
 import './App.css';
-// @ts-ignore
-const tg = window.Telegram.WebApp;
+import {useTelegram} from "./hooks/useTelegram";
+import Header from "./components/Header";
+
 function App() {
+
+    const {tg, onToogleButton} = useTelegram()
 
     useEffect(() => {
         tg.ready();
     }, [])
 
-    const onClone = () => {
-        tg.close();
-    }
-
   return (
     <div className="App">
-      App work1
-        <button onClick={onClone}>Закрыть</button>
+        <Header/>
+        <button onClick={onToogleButton}>toogle</button>
     </div>
   );
 }
